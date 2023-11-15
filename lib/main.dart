@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamekuy_app/pages/login_page.dart';
 import 'package:gamekuy_app/theme.dart';
 import 'package:gamekuy_app/widgets/navbar.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: mainTheme,
       debugShowCheckedModeBanner: false,
-      home: Navbar(),
+      home: LoginPage(),
     );
   }
 }

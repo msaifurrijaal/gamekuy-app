@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gamekuy_app/blocs/game/bloc/game_bloc.dart';
+import 'package:gamekuy_app/models/article.dart';
 import 'package:gamekuy_app/models/game.dart';
 import 'package:gamekuy_app/theme.dart';
+import 'package:gamekuy_app/widgets/article_card_widget.dart';
 import 'package:gamekuy_app/widgets/game_card_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -127,7 +129,6 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 10),
                 BlocBuilder<GameBloc, GameState>(
                   builder: (context, state) {
-                    print(state);
                     if (state is GameLoading) {
                       return const SizedBox(
                         height: 150,
@@ -289,6 +290,21 @@ class HomePage extends StatelessWidget {
                         .textTheme
                         .titleLarge
                         ?.copyWith(fontWeight: FontWeight.w600),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: articleList.length,
+                    itemBuilder: (context, index) {
+                      final Article article = articleList[index];
+                      return Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: ArticleCard(articleItem: article));
+                    },
                   ),
                 )
               ],

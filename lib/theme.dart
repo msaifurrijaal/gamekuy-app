@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-const Color blueColor = Color(0xFF0E64E6);
-const Color darkBlueColor = Color(0xFF0B50B8);
-const Color softBlueColor = Color(0xFFEFF8FF);
+const Color redColor = Color(0xFFD80032);
+const Color darkRedColor = Color(0xFF900C3F);
+const Color softRedColor = Color(0xFFFF6969);
 const Color black = Color(0xFF000000);
 const Color whiteColor = Color(0xffFFFFFF);
 const Color greyColor = Color(0xff98A2B3);
 const Color softGreyColor = Color(0xFFCCCCCC);
+const Color greyLightColor = Color(0xFFebebeb);
 
 ThemeData mainTheme = ThemeData(
   fontFamily: 'Poppins',
@@ -35,10 +36,10 @@ ThemeData mainTheme = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all(darkBlueColor),
+      backgroundColor: MaterialStateProperty.all(redColor),
       shape: MaterialStateProperty.all(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50),
+        const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
       ),
     ),
