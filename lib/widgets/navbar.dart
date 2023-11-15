@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gamekuy_app/blocs/game/bloc/game_bloc.dart';
+import 'package:gamekuy_app/blocs/game/game_bloc.dart';
 import 'package:gamekuy_app/pages/category_page.dart';
 import 'package:gamekuy_app/pages/favorite_page.dart';
 import 'package:gamekuy_app/pages/home_page.dart';
@@ -12,6 +12,7 @@ class Navbar extends StatefulWidget {
     super.key,
   });
 
+  static const routeName = "/navbar";
   @override
   State<Navbar> createState() => _NavbarState();
 }

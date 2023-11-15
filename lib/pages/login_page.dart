@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gamekuy_app/pages/register_page.dart';
 import 'package:gamekuy_app/theme.dart';
 import 'package:gamekuy_app/widgets/navbar.dart';
 
@@ -158,8 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => (Navbar())));
+                      Navigator.pushNamed(context, Navbar.routeName);
                     }
                   },
                   child: Text(
@@ -256,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
                   splashColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () {
-                    // Navigator.pushNamed(context, RegisterPage.routeName);
+                    Navigator.pushNamed(context, RegisterPage.routeName);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

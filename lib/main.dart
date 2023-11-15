@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gamekuy_app/blocs/auth/auth_bloc.dart';
 import 'package:gamekuy_app/pages/login_page.dart';
+import 'package:gamekuy_app/pages/register_page.dart';
 import 'package:gamekuy_app/theme.dart';
 import 'package:gamekuy_app/widgets/navbar.dart';
 
@@ -12,10 +15,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: mainTheme,
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+    return BlocProvider(
+      create: (context) => AuthBloc(),
+      child: MaterialApp(
+        theme: mainTheme,
+        debugShowCheckedModeBanner: false,
+        home: LoginPage(),
+        routes: {
+          RegisterPage.routeName: (context) => RegisterPage(),
+          Navbar.routeName: (context) => Navbar(),
+        },
+      ),
     );
   }
 }

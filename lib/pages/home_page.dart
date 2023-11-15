@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gamekuy_app/blocs/game/bloc/game_bloc.dart';
+import 'package:gamekuy_app/blocs/game/game_bloc.dart';
 import 'package:gamekuy_app/models/article.dart';
 import 'package:gamekuy_app/models/game.dart';
 import 'package:gamekuy_app/theme.dart';
