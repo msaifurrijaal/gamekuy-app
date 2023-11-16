@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gamekuy_app/blocs/auth/auth_bloc.dart';
 import 'package:gamekuy_app/pages/register_page.dart';
 import 'package:gamekuy_app/theme.dart';
 import 'package:gamekuy_app/widgets/navbar.dart';
@@ -151,22 +153,96 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                ElevatedButton(
-                  style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                        minimumSize: MaterialStateProperty.all(
-                          const Size(double.infinity, 48),
+                BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, state) {
+                    if (state is SignInLoading) {
+                      return ElevatedButton(
+                        style: Theme.of(context)
+                            .elevatedButtonTheme
+                            .style
+                            ?.copyWith(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size(double.infinity, 48),
+                              ),
+                            ),
+                        onPressed: () {},
+                        child: const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            color: whiteColor,
+                          ),
                         ),
-                      ),
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, Navbar.routeName);
+                      );
                     }
+                    if (state is SignInSuccess) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        Navigator.pushReplacementNamed(
+                            context, Navbar.routeName);
+                      });
+                    }
+                    if (state is SignInError) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(state.errorMessage),
+                          ),
+                        );
+                      });
+                      return ElevatedButton(
+                        style: Theme.of(context)
+                            .elevatedButtonTheme
+                            .style
+                            ?.copyWith(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size(double.infinity, 48),
+                              ),
+                            ),
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<AuthBloc>().add(
+                                  SingInEvent(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  ),
+                                );
+                          }
+                        },
+                        child: Text(
+                          'Masuk',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: whiteColor),
+                        ),
+                      );
+                    }
+                    return ElevatedButton(
+                      style:
+                          Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                                minimumSize: MaterialStateProperty.all(
+                                  const Size(double.infinity, 48),
+                                ),
+                              ),
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<AuthBloc>().add(
+                                SingInEvent(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
+                        }
+                      },
+                      child: Text(
+                        'Masuk',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w500, color: whiteColor),
+                      ),
+                    );
                   },
-                  child: Text(
-                    'Masuk',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500, color: whiteColor),
-                  ),
                 ),
                 const SizedBox(height: 28),
                 Row(

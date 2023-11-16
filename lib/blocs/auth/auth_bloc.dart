@@ -34,7 +34,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } catch (error) {
         emit(SignUpError(errorMessage: error.toString()));
       }
-      print(state);
+    });
+
+    on<SingInEvent>((event, emit) async {
+      emit(SignInLoading());
+
+      try {
+        var url = Uri.parse(
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Xso8d2JSbJfJux1EXscJ756uzwN0Xw");
+
+        var response = await http.post(
+          url,
+          body: json.encode({
+            "email": event.email,
+            "password": event.password,
+            "returnSecureToken": true,
+          }),
+        );
+
+        var responseData = json.decode(response.body);
+
+        if (responseData['error'] != null) {
+          throw responseData['error']["message"];
+        }
+
+        String uid = responseData["localId"];
+
+        emit(SignInSuccess(uid: uid));
+      } catch (error) {
+        emit(SignInError(errorMessage: error.toString()));
+      }
     });
   }
 }

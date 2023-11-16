@@ -211,27 +211,96 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
                 const SizedBox(height: 24),
-                ElevatedButton(
-                  style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                        minimumSize: MaterialStateProperty.all(
-                          const Size(double.infinity, 48),
-                        ),
-                      ),
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      context.read<AuthBloc>().add(
-                            SingUpEvent(
-                              email: emailController.text,
-                              password: passwordController.text,
+                BlocBuilder<AuthBloc, AuthState>(
+                  builder: (context, state) {
+                    if (state is SignUpLoading) {
+                      return ElevatedButton(
+                        style: Theme.of(context)
+                            .elevatedButtonTheme
+                            .style
+                            ?.copyWith(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size(double.infinity, 48),
+                              ),
                             ),
-                          );
+                        onPressed: () {},
+                        child: const SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: CircularProgressIndicator(
+                            color: whiteColor,
+                          ),
+                        ),
+                      );
                     }
+                    if (state is SignUpSuccess) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        Navigator.pushReplacementNamed(
+                            context, Navbar.routeName);
+                      });
+                    }
+                    if (state is SignUpError) {
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(state.errorMessage),
+                          ),
+                        );
+                      });
+                      return ElevatedButton(
+                        style: Theme.of(context)
+                            .elevatedButtonTheme
+                            .style
+                            ?.copyWith(
+                              minimumSize: MaterialStateProperty.all(
+                                const Size(double.infinity, 48),
+                              ),
+                            ),
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<AuthBloc>().add(
+                                  SingUpEvent(
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                  ),
+                                );
+                          }
+                        },
+                        child: Text(
+                          'Daftar',
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: whiteColor),
+                        ),
+                      );
+                    }
+                    return ElevatedButton(
+                      style:
+                          Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                                minimumSize: MaterialStateProperty.all(
+                                  const Size(double.infinity, 48),
+                                ),
+                              ),
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          context.read<AuthBloc>().add(
+                                SingUpEvent(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ),
+                              );
+                        }
+                      },
+                      child: Text(
+                        'Daftar',
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w500, color: whiteColor),
+                      ),
+                    );
                   },
-                  child: Text(
-                    'Daftar',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        fontWeight: FontWeight.w500, color: whiteColor),
-                  ),
                 ),
                 const SizedBox(height: 28),
                 Row(

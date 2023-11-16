@@ -20,7 +20,11 @@ class SignUpError extends AuthState {
 
 class SignInLoading extends AuthState {}
 
-class SignInSuccess extends AuthState {}
+class SignInSuccess extends AuthState {
+  final String uid;
+
+  SignInSuccess({required this.uid});
+}
 
 class SignInError extends AuthState {
   final String errorMessage;
