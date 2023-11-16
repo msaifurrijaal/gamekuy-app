@@ -15,3 +15,5 @@ class SingInEvent extends AuthEvent {
 
   SingInEvent({required this.email, required this.password});
 }
+
+class LogoutEvent extends AuthEvent {}

@@ -65,5 +65,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(SignInError(errorMessage: error.toString()));
       }
     });
+
+    on(<LogoutEvent>(event, emit) {
+      emit(LogoutSuccess());
+    });
   }
 }

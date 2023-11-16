@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         routes: {
           RegisterPage.routeName: (context) => RegisterPage(),
           Navbar.routeName: (context) => Navbar(),
+          LoginPage.routeName: (context) => LoginPage()
         },
       ),
     );

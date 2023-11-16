@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         title: Center(
           child: Text(
-            'Daftar',
+            'Register',
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge
@@ -91,17 +91,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                         validator: (email) {
                           if (email == null || email.isEmpty) {
-                            return 'Silahkan isi email';
+                            return 'Please fill in your email';
                           }
                           if (!RegExp(r'\S+@\S+\.\S+').hasMatch(email)) {
-                            return 'Silahkan gunakan email yang benar';
+                            return 'Please use the correct email';
                           }
                           return null;
                         },
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Kata Sandi',
+                        'Password',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 8),
@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 12),
-                          hintText: "Kata Sandi",
+                          hintText: "Password",
                           hintStyle: const TextStyle(color: greyColor),
                           enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(6)),
@@ -134,12 +134,12 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         validator: (password) => password!.isEmpty
-                            ? 'Silahkan isi kata sandi'
+                            ? 'Please enter a password'
                             : null,
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Konfirmasi Kata Sandi',
+                        'Confirm Password',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 8),
@@ -149,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 12),
-                          hintText: "Konfirmasi Kata Sandi",
+                          hintText: "Confirm password",
                           hintStyle: const TextStyle(color: greyColor),
                           enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(6)),
@@ -172,7 +172,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         validator: (password) => password!.isEmpty
-                            ? 'Silahkan isi konfirmasi password'
+                            ? 'Please enter a confirm password'
                             : null,
                       ),
                     ],
@@ -196,13 +196,13 @@ class _RegisterPageState extends State<RegisterPage> {
                           fillColor: MaterialStateProperty.all(whiteColor),
                         ),
                         Text(
-                          'Ingat Saya',
+                          'Remember me',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),
                     Text(
-                      'Lupa password?',
+                      'Forgot Password?',
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall
@@ -267,7 +267,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           }
                         },
                         child: Text(
-                          'Daftar',
+                          'Register',
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
@@ -295,7 +295,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         }
                       },
                       child: Text(
-                        'Daftar',
+                        'Register',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             fontWeight: FontWeight.w500, color: whiteColor),
                       ),
@@ -314,7 +314,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     const SizedBox(width: 14),
                     Text(
-                      'atau daftar dengan',
+                      'or register with',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const SizedBox(width: 14),
@@ -396,12 +396,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Sudah mempunyai akun?',
+                        'Already have an account?',
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Masuk',
+                        'Login',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.w500,
                               color: redColor,

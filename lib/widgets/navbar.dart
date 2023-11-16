@@ -4,7 +4,7 @@ import 'package:gamekuy_app/blocs/game/game_bloc.dart';
 import 'package:gamekuy_app/pages/category_page.dart';
 import 'package:gamekuy_app/pages/favorite_page.dart';
 import 'package:gamekuy_app/pages/home_page.dart';
-import 'package:gamekuy_app/pages/profileapp.dart';
+import 'package:gamekuy_app/pages/profile_page.dart';
 import 'package:gamekuy_app/theme.dart';
 
 class Navbar extends StatefulWidget {

@@ -31,3 +31,5 @@ class SignInError extends AuthState {
 
   SignInError({required this.errorMessage});
 }
+
+class LogoutSuccess extends AuthState {}

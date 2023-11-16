@@ -10,6 +10,8 @@ final formKey = GlobalKey<FormState>();
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  static const routeName = "/login-page";
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -27,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         backgroundColor: Colors.transparent,
         title: Center(
           child: Text(
-            'Masuk',
+            'Login',
             style: Theme.of(context)
                 .textTheme
                 .bodyLarge
@@ -71,17 +73,17 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         validator: (email) {
                           if (email == null || email.isEmpty) {
-                            return 'Silahkan isi email';
+                            return 'Please fill in your email';
                           }
                           if (!RegExp(r'\S+@\S+\.\S+').hasMatch(email)) {
-                            return 'Silahkan gunakan email yang benar';
+                            return 'Please use the correct email';
                           }
                           return null;
                         },
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        'Kata Sandi',
+                        'Password',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: 8),
@@ -91,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 12),
-                          hintText: "Kata Sandi",
+                          hintText: "Password",
                           hintStyle: const TextStyle(color: greyColor),
                           enabledBorder: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(6)),
@@ -114,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         validator: (password) => password!.isEmpty
-                            ? 'Silahkan isi kata sandi'
+                            ? 'Please enter a password'
                             : null,
                       ),
                     ],
@@ -138,13 +140,13 @@ class _LoginPageState extends State<LoginPage> {
                           fillColor: MaterialStateProperty.all(whiteColor),
                         ),
                         Text(
-                          'Ingat Saya',
+                          'Remember me',
                           style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),
                     Text(
-                      'Lupa password?',
+                      'Forgot Password?',
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall
@@ -209,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                         child: Text(
-                          'Masuk',
+                          'Login',
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium
@@ -237,7 +239,7 @@ class _LoginPageState extends State<LoginPage> {
                         }
                       },
                       child: Text(
-                        'Masuk',
+                        'Login',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             fontWeight: FontWeight.w500, color: whiteColor),
                       ),
@@ -256,7 +258,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(width: 14),
                     Text(
-                      'atau masuk dengan',
+                      'or login with',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const SizedBox(width: 14),
@@ -338,12 +340,12 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Belum mempunyai akun?',
+                        "Don't have an account yet?",
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        'Daftar',
+                        'Register',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               fontWeight: FontWeight.w500,
                               color: redColor,
