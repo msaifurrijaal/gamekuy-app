@@ -66,7 +66,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
-    on(<LogoutEvent>(event, emit) {
+    on(<LogoutEvent>(event, emit) async {
       emit(LogoutSuccess());
     });
   }

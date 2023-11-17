@@ -34,7 +34,8 @@ class ProfilePage extends StatelessWidget {
               height: 120,
               decoration: const ShapeDecoration(
                 image: DecorationImage(
-                  image: NetworkImage("https://via.placeholder.com/120x120"),
+                  image: NetworkImage(
+                      "https://randomuser.me/api/portraits/men/5.jpg"),
                   fit: BoxFit.fill,
                 ),
                 shape: OvalBorder(
@@ -195,8 +196,13 @@ class ProfilePage extends StatelessWidget {
                       BlocBuilder<AuthBloc, AuthState>(
                         builder: (context, state) {
                           if (state is LogoutSuccess) {
-                            return Expanded(
-                                child: ElevatedButton(
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              Navigator.pushReplacementNamed(
+                                  context, LoginPage.routeName);
+                            });
+                          }
+                          return Expanded(
+                            child: ElevatedButton(
                               style: Theme.of(context)
                                   .elevatedButtonTheme
                                   .style
@@ -215,39 +221,14 @@ class ProfilePage extends StatelessWidget {
                                         color: whiteColor),
                               ),
                               onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, LoginPage.routeName);
+                                context.read<AuthBloc>().add(LogoutEvent());
                               },
-                            ));
-                          }
-                          return Expanded(
-                              child: ElevatedButton(
-                            style: Theme.of(context)
-                                .elevatedButtonTheme
-                                .style
-                                ?.copyWith(
-                                  minimumSize: const MaterialStatePropertyAll(
-                                    Size(double.infinity, 48),
-                                  ),
-                                ),
-                            child: Text(
-                              'Logout',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      color: whiteColor),
                             ),
-                            onPressed: () {
-                              Navigator.pushReplacementNamed(
-                                  context, LoginPage.routeName);
-                            },
-                          ));
+                          );
                         },
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             )

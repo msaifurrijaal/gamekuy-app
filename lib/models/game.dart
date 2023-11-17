@@ -34,13 +34,13 @@ class Game {
         id: json['id'],
         title: json['title'],
         thumbnail: json['thumbnail'],
-        shortDescription: json['shortDescription'],
-        gameUrl: json['gameUrl'],
+        shortDescription: json['short_description'],
+        gameUrl: json['game_url'],
         genre: json['genre'],
         platform: json['platform'],
         publisher: json['publisher'],
         developer: json["developer"],
-        releaseDate: json["releaseDate"],
-        freetogameProfileUrl: json["freetogameProfileUrl"],
+        releaseDate: json["release_date"],
+        freetogameProfileUrl: json["freetogame_profile_url"],
       );
 }

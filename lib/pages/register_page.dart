@@ -397,12 +397,12 @@ class _RegisterPageState extends State<RegisterPage> {
                     children: [
                       Text(
                         'Already have an account?',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(width: 4),
                       Text(
                         'Login',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               fontWeight: FontWeight.w500,
                               color: redColor,
                             ),
