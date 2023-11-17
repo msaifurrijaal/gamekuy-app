@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
         backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          color: Colors.black,
+          color: blackColor,
           onPressed: () => Navigator.pop(context),
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
@@ -308,7 +308,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     Expanded(
                       child: Container(
-                        decoration: const BoxDecoration(color: black),
+                        decoration: const BoxDecoration(color: blackColor),
                         height: 0.5,
                       ),
                     ),
@@ -320,7 +320,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(width: 14),
                     Expanded(
                       child: Container(
-                        decoration: const BoxDecoration(color: black),
+                        decoration: const BoxDecoration(color: blackColor),
                         height: 0.5,
                       ),
                     ),

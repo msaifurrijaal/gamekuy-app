@@ -30,21 +30,21 @@ class HomePage extends StatelessWidget {
                           Text(
                             'GAME',
                             style: TextStyle(
-                                color: Colors.black,
+                                color: blackColor,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 24),
                           ),
                           Text(
                             'Z',
                             style: TextStyle(
-                                color: Colors.red,
+                                color: redColor,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 24),
                           ),
                           Text(
                             'ONE',
                             style: TextStyle(
-                                color: Colors.black,
+                                color: blackColor,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 24),
                           ),
@@ -56,14 +56,14 @@ class HomePage extends StatelessWidget {
                             onPressed: () {},
                             icon: const Icon(
                               Icons.notifications_none_outlined,
-                              color: Colors.black,
+                              color: redColor,
                             ),
                           ),
                           IconButton(
                             onPressed: () {},
                             icon: const Icon(
                               Icons.person_outline_rounded,
-                              color: Colors.black,
+                              color: redColor,
                             ),
                           )
                         ],

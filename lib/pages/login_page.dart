@@ -252,7 +252,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Expanded(
                       child: Container(
-                        decoration: const BoxDecoration(color: black),
+                        decoration: const BoxDecoration(color: blackColor),
                         height: 0.5,
                       ),
                     ),
@@ -264,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(width: 14),
                     Expanded(
                       child: Container(
-                        decoration: const BoxDecoration(color: black),
+                        decoration: const BoxDecoration(color: blackColor),
                         height: 0.5,
                       ),
                     ),
