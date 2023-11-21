@@ -6,8 +6,20 @@ import 'package:gamekuy_app/theme.dart';
 import 'package:gamekuy_app/widgets/article_card_widget.dart';
 import 'package:gamekuy_app/widgets/game_card_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<GameBloc>().add(GetAllGameEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,15 +149,18 @@ class HomePage extends StatelessWidget {
                       );
                     }
                     if (state is GameSuccess) {
+                      var listGames = state.games.take(10).toList();
                       return Container(
                         height: 150,
                         child: ListView.builder(
                           padding: const EdgeInsets.only(left: 10),
                           scrollDirection: Axis.horizontal,
-                          itemCount: state.games.length,
+                          itemCount: listGames.length,
                           itemBuilder: (context, index) {
                             return CardGame(
-                              gameItem: state.games[index],
+                              gameItem: listGames[index],
+                              marginLeft: 10.0,
+                              width: 250.0,
                             );
                           },
                         ),

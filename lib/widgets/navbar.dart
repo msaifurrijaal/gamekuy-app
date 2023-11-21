@@ -21,8 +21,9 @@ class _NavbarState extends State<Navbar> {
   int selectedIndex = 0;
   List pages = [
     BlocProvider(
-        create: (context) => GameBloc()..add(GetAllGameEvent()),
-        child: const HomePage()),
+      create: (context) => GameBloc(),
+      child: const HomePage(),
+    ),
     const CategoryPage(),
     const FavoritePage(),
     const ProfilePage()

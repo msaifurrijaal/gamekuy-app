@@ -6,6 +6,10 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
+    on(<LogoutEvent>(event, emit) async {
+      emit(LogoutSuccess());
+    });
+
     on<SingUpEvent>((event, emit) async {
       emit(SignUpLoading());
 
@@ -38,7 +42,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<SingInEvent>((event, emit) async {
       emit(SignInLoading());
-
       try {
         var url = Uri.parse(
             "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Xso8d2JSbJfJux1EXscJ756uzwN0Xw");
@@ -64,10 +67,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } catch (error) {
         emit(SignInError(errorMessage: error.toString()));
       }
-    });
-
-    on(<LogoutEvent>(event, emit) async {
-      emit(LogoutSuccess());
     });
   }
 }

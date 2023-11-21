@@ -7,9 +7,12 @@ class CardGame extends StatelessWidget {
   const CardGame({
     super.key,
     required this.gameItem,
+    required this.marginLeft,
+    required this.width,
   });
 
   final Game gameItem;
+  final double marginLeft, width;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class CardGame extends StatelessWidget {
         ),
       ),
       child: Container(
-        margin: const EdgeInsets.only(left: 10),
+        margin: EdgeInsets.only(left: marginLeft),
         decoration: const BoxDecoration(
           color: whiteColor,
           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -38,7 +41,7 @@ class CardGame extends StatelessWidget {
           children: [
             Image.network(
               gameItem.thumbnail ?? '',
-              width: 250,
+              width: width,
               height: 150,
               fit: BoxFit.cover,
             ),
