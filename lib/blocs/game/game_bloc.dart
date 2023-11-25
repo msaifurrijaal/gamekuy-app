@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:gamekuy_app/models/game.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,10 +9,10 @@ part 'game_state.dart';
 class GameBloc extends Bloc<GameEvent, GameState> {
   GameBloc() : super(GameInitial()) {
     on<GetAllGameEvent>((event, emit) async {
+      emit(GameLoading());
       try {
-        emit(GameLoading());
-        final response =
-            await http.get(Uri.parse('https://www.freetogame.com/api/games'));
+        var url = Uri.parse('${dotenv.env['BASE_URL_GAME']}api/games');
+        final response = await http.get(url);
 
         if (response.statusCode == 200) {
           emit(GameSuccess(games: gameFromJson(response.body)));

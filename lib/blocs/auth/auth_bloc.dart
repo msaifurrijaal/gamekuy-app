@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 part 'auth_event.dart';
 part 'auth_state.dart';
@@ -15,7 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       try {
         var url = Uri.parse(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDp4Xso8d2JSbJfJux1EXscJ756uzwN0Xw");
+            "${dotenv.env['BASE_URL_AUTH']}v1/accounts:signUp?key=${dotenv.env['API_KEY']}");
 
         var response = await http.post(
           url,
@@ -44,7 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(SignInLoading());
       try {
         var url = Uri.parse(
-            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDp4Xso8d2JSbJfJux1EXscJ756uzwN0Xw");
+            "${dotenv.env['BASE_URL_AUTH']}v1/accounts:signInWithPassword?key=${dotenv.env['API_KEY']}");
 
         var response = await http.post(
           url,

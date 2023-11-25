@@ -14,6 +14,7 @@ dependencies:
   http: ^1.1.0
   intl: ^0.17.0
   shared_preferences: ^2.0.5
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +24,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/env/.env_dev
+    - assets/env/.env_prod
     - assets/images/
   fonts:
     - family: Poppins
