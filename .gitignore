@@ -43,6 +43,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# File .env
+# File .env config
 /assets/env/.env_dev
 /assets/env/.env_prod
